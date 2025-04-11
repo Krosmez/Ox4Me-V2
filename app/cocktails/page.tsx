@@ -4,7 +4,7 @@ import { cocktails } from '@/lib/cocktails';
 export default async function Page() {
     return (
         <>
-            <h1>Cocktail page</h1>
+            <h1 className="text-2xl font-bold">Cocktail page</h1>
             <div className="space-y-6 mt-6">
                 { cocktails.map((cocktail) => (
                     <Card
