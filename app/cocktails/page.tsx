@@ -1,4 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { cocktails } from '@/lib/cocktails';
 
 export default async function Page() {
@@ -26,6 +27,11 @@ export default async function Page() {
                                 )) }
                             </ul>
                         </CardContent>
+                        <CardFooter>
+                            <Button className="mx-auto">
+                                Ajouter aux favoris
+                            </Button>
+                        </CardFooter>
                     </Card>
                 ))
                 }
