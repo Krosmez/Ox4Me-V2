@@ -1,6 +1,5 @@
 import "./globals.css";
 
-import Link from "next/link";
 import MenuList from "@/components/custom/menu-list";
 import { Geist, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
@@ -28,7 +27,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased p-6`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased pr-6`}
             >
                 <aside className="hidden md:block w-1/4 h-screen bg-gray-100 p-4">
                     <MenuList variant="vertical" />
