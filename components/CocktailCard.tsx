@@ -36,8 +36,8 @@ export default function CocktailCard({ cocktail, favCocktails, setFavCocktails }
                     <Image
                         src={ `/cocktail.webp` }
                         alt={ cocktail.name }
-                        width={ 150 }
-                        height={ 150 }
+                        width={ 500 }
+                        height={ 500 }
                         className="size-full"
                     />
                 </CardContent>

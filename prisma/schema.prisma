@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -10,7 +9,32 @@ datasource db {
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model cocktails {
-  id         Int      @id @unique @default(autoincrement())
-  name       String
-  created_at DateTime @default(now()) @db.Timestamptz(6)
+  id          Int       @id @unique @default(autoincrement())
+  name        String?
+  category    category?
+  ingredients Json[]
+  created_at  DateTime  @default(now()) @db.Timestamptz(6)
+  taste       taste?
+  image       String?
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model events {
+  id         Int       @id @default(autoincrement())
+  created_at DateTime  @default(now()) @db.Timestamptz(6)
+  name       String?
+  startAt    DateTime? @db.Timestamp(6)
+  endAt      DateTime? @db.Timestamp(6)
+}
+
+enum category {
+  classic
+  homemade
+}
+
+enum taste {
+  fruity
+  bitter
+  acid
+  sweet
 }

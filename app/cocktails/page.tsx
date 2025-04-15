@@ -1,13 +1,14 @@
 "use client";
 
 import CocktailCard from '@/components/CocktailCard';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { Switch } from '@/components/ui/switch';
-import { cocktails } from '@/lib/cocktails';
 import { Cocktail } from '@/models';
 import { useEffect, useState } from 'react';
 
 export default function Page() {
 
+    const [cocktails, setCocktails] = useState<Cocktail[]>([]);
     const [favCocktails, setFavCocktails] = useState<Cocktail[]>([]);
     const [showOnlyFav, setShowOnlyFav] = useState<boolean>(false);
 
@@ -16,37 +17,34 @@ export default function Page() {
         if (savedCocktails) {
             setFavCocktails(JSON.parse(savedCocktails));
         }
+
+        fetch('/api/cocktails')
+            .then((res) => res.json())
+            .then((data) => setCocktails(data))
+            .catch((error) => console.error('Error fetching cocktails:', error));
     }, []);
 
     return (
-        <div className="p-6 w-full">
-            <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold">Cocktail page</h1>
-                <div className="flex items-center gap-2">
-                    <label
-                        htmlFor="show-fav"
-                        className="ml-2 text-sm"
-                    >
-                        Afficher seulement les favoris
-                    </label>
-                    <Switch
-                        id="show-fav"
-                        checked={ showOnlyFav }
-                        onCheckedChange={ setShowOnlyFav }
-                    />
+        <ScrollArea className="w-full">
+            <div className="p-6">
+                <div className="flex items-center justify-between">
+                    <h1 className="text-2xl font-bold">Cocktail page</h1>
+                    <div className="flex items-center gap-2">
+                        <label
+                            htmlFor="show-fav"
+                            className="ml-2 text-sm"
+                        >
+                            Afficher seulement les favoris
+                        </label>
+                        <Switch
+                            id="show-fav"
+                            checked={ showOnlyFav }
+                            onCheckedChange={ setShowOnlyFav }
+                        />
+                    </div>
                 </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
-                { showOnlyFav ? favCocktails.map((cocktail: Cocktail) => (
-                    <CocktailCard
-                        key={ cocktail.id }
-                        cocktail={ cocktail }
-                        favCocktails={ favCocktails }
-                        setFavCocktails={ setFavCocktails }
-                    />
-                ))
-                    :
-                    cocktails.map((cocktail: Cocktail) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-6">
+                    { showOnlyFav ? favCocktails.map((cocktail: Cocktail) => (
                         <CocktailCard
                             key={ cocktail.id }
                             cocktail={ cocktail }
@@ -54,8 +52,18 @@ export default function Page() {
                             setFavCocktails={ setFavCocktails }
                         />
                     ))
-                }
+                        :
+                        cocktails.map((cocktail: Cocktail) => (
+                            <CocktailCard
+                                key={ cocktail.id }
+                                cocktail={ cocktail }
+                                favCocktails={ favCocktails }
+                                setFavCocktails={ setFavCocktails }
+                            />
+                        ))
+                    }
+                </div>
             </div>
-        </div>
+        </ScrollArea>
     );
 };

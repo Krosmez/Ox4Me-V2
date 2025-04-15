@@ -27,8 +27,8 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={ `${geistSans.variable} ${geistMono.variable} antialiased` }>
-                <div className="flex w-full">
-                    <aside className="hidden md:block w-[250px] h-screen bg-gray-100 p-4">
+                <div className="flex w-full pl-[250px]">
+                    <aside className="hidden md:block fixed left-0 top-0 w-[250px] h-screen bg-gray-100 p-4">
                         <MenuList variant="vertical" />
                     </aside>
                     { children }
