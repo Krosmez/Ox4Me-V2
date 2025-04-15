@@ -3,12 +3,12 @@
 import CocktailCard from '@/components/CocktailCard';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Switch } from '@/components/ui/switch';
-import { cocktails } from '@/lib/cocktails';
 import { Cocktail } from '@/models';
 import { useEffect, useState } from 'react';
 
 export default function Page() {
 
+    const [cocktails, setCocktails] = useState<Cocktail[]>([]);
     const [favCocktails, setFavCocktails] = useState<Cocktail[]>([]);
     const [showOnlyFav, setShowOnlyFav] = useState<boolean>(false);
 
@@ -17,6 +17,11 @@ export default function Page() {
         if (savedCocktails) {
             setFavCocktails(JSON.parse(savedCocktails));
         }
+
+        fetch('/api/cocktails')
+            .then((res) => res.json())
+            .then((data) => setCocktails(data))
+            .catch((error) => console.error('Error fetching cocktails:', error));
     }, []);
 
     return (
