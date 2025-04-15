@@ -86,7 +86,7 @@ export default function Page() {
     };
 
     return (
-        <main className="p-4 max-w-4xl mx-auto">
+        <main className="w-full">
             <h1 className="text-2xl font-bold mb-4">📅 Mon Calendrier</h1>
             <Dialog open={ open } onOpenChange={ setOpen }>
                 <FullCalendar
