@@ -6,7 +6,7 @@ export const cocktails = [
     ingredients: [
       { name: "Sirop Falernum" },
       { name: "Jus de citron vert" },
-      { name: "Quartiers de citron vert", quantity: "2" },
+      { name: "Quartiers de citron vert"},
       { name: "Rhum Kraken" },
       { name: "Ginger Beer" },
     ],
@@ -14,12 +14,6 @@ export const cocktails = [
   {
     id: "maree_noire",
     name: "Marée noire",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "traquenard_en_douceur",
-    name: "Traquenard en douceur",
     category: "homemade",
     ingredients: [{ name: "" }],
   },
@@ -32,12 +26,6 @@ export const cocktails = [
   {
     id: "ptit_biscuit",
     name: "P'tit biscuit",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "le_petit_pres",
-    name: "Le petit près",
     category: "homemade",
     ingredients: [{ name: "" }],
   },
@@ -60,38 +48,8 @@ export const cocktails = [
     ingredients: [{ name: "" }],
   },
   {
-    id: "devils_deal",
-    name: "Devil's deal",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "anus_de_fer",
-    name: "Anus de fer",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "le_bon_dej",
-    name: "Le bon déj'",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
     id: "blue_dildo",
     name: "Blue dildo",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "la_catin_des_prebendes",
-    name: "La catin des prébendes",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "il_est_frais_le_gardon",
-    name: "Il est frais le gardon",
     category: "homemade",
     ingredients: [{ name: "" }],
   },
@@ -104,18 +62,6 @@ export const cocktails = [
   {
     id: "fais_confiance",
     name: "Fais confiance",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "foie_de_coton",
-    name: "Foie de coton",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "desperate_ass_wives",
-    name: "Desperate ass wives",
     category: "homemade",
     ingredients: [{ name: "" }],
   },
@@ -138,20 +84,8 @@ export const cocktails = [
     ingredients: [{ name: "" }],
   },
   {
-    id: "tiniac",
-    name: "Tiniac",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
     id: "suze_moi_si_tu_peux",
     name: "Suze-moi si tu peux",
-    category: "homemade",
-    ingredients: [{ name: "" }],
-  },
-  {
-    id: "lady_fist",
-    name: "Lady fist",
     category: "homemade",
     ingredients: [{ name: "" }],
   },
