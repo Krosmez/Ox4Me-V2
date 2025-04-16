@@ -1,5 +1,6 @@
-import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { getUser } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   const events = await prisma.events.findMany();
@@ -21,4 +22,17 @@ export async function POST(request: Request) {
   });
 
   return NextResponse.json(event);
+}
+
+export async function DELETE(req: Request) {
+  const user = await getUser();
+  const { event_id } = await req.json();
+
+  await prisma.events_users.delete({
+    where: {
+      user_id_event_id: { user_id: user.id, event_id },
+    },
+  });
+
+  return Response.json({ success: true });
 }
