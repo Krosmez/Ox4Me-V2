@@ -5,6 +5,7 @@ import { Cocktail } from '@/models';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose } from '@/components/ui/dialog';
 import React from 'react';
 import Image from 'next/image';
+import { Star } from 'lucide-react';
 
 interface CocktailCardProps {
     cocktail: Cocktail;
@@ -20,28 +21,26 @@ export default function CocktailCard({ cocktail, favCocktails, setFavCocktails }
 
     return (
         <Card
-            className={ `flex flex-col justify-between gap-4 ${isFavCocktail(cocktail) ? 'outline-3 outline-green-300' : ''}` }
+            className={ `flex flex-col justify-between gap-0 p-0 ${isFavCocktail(cocktail) ? 'outline outline-green-500' : ''}` }
             key={ cocktail.id }
         >
-            <CardHeader className="text-center">
+            <CardHeader className="text-center p-4">
                 <CardTitle className="flex items-center justify-center gap-1">
-                    <span>{ isFavCocktail(cocktail) && '⭐' }</span>
                     <p>{ cocktail.name }</p>
-                    <span>{ isFavCocktail(cocktail) && '⭐' }</span>
                 </CardTitle>
                 <CardDescription>{ cocktail.category }</CardDescription>
             </CardHeader>
             <div>
-                <CardContent className="px-0">
+                <CardContent className="px-0 relative">
                     <Image
                         src={ `/cocktail.webp` }
                         alt={ cocktail.name }
                         width={ 500 }
                         height={ 500 }
-                        className="size-full"
                     />
+                    { isFavCocktail(cocktail) && <Star className="absolute top-2 right-2 fill-yellow-500 stroke-1" size={ 48 } /> }
                 </CardContent>
-                <CardFooter className="flex flex-col gap-2 mt-4">
+                <CardFooter className="flex flex-col gap-2 p-4">
                     <Dialog>
                         <DialogTrigger asChild>
                             <Button

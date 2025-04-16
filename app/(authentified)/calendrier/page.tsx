@@ -87,7 +87,9 @@ export default function Page() {
 
     return (
         <main className="w-full">
-            <h1 className="text-2xl font-bold mb-4">📅 Mon Calendrier</h1>
+            <h1 className="text-2xl font-bold mb-4">
+                📅 Mon Calendrier
+            </h1>
             <Dialog open={ open } onOpenChange={ setOpen }>
                 <FullCalendar
                     plugins={ [dayGridPlugin, interactionPlugin] }
@@ -107,9 +109,7 @@ export default function Page() {
                             Vous pourrez toujours l&apos;éditer ou le supprimer plus tard.
                         </DialogDescription>
                         <Form { ...form }>
-                            <form
-                                className="mt-4 flex items-end justify-center gap-4"
-                            >
+                            <form className="mt-4 flex items-end justify-center gap-4">
                                 <FormField
                                     control={ form.control }
                                     name="title"
