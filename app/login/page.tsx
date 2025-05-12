@@ -1,26 +1,12 @@
 "use client";
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { login, signup } from './actions';
+import { JSX } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function Page() {
-
-    const formSchema = z.object({
-        email: z.string(),
-        password: z.string(),
-    });
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            email: undefined,
-            password: undefined,
-        },
-    });
+export default function Page(): JSX.Element {
 
     return (
         <div className="p-6 w-full">
@@ -28,44 +14,35 @@ export default function Page() {
                 <h1 className="text-2xl font-bold text-center">Ox4Me</h1>
                 <h3 className="text-lg font-bold mt-2">Connexion</h3>
                 <p className="text-sm text-muted-foreground">Connecte toi à l&apos;Ox4Me pour accéder à ton calendrier des évènements de l&apos;Oxford Pub</p>
-                <Form { ...form }>
-                    <form className="mt-4">
-                        <FormField
-                            control={ form.control }
-                            name="email"
-                            render={ ({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Email</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Entrez votre email" { ...field } />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            ) }
-                        />
-                        <FormField
-                            control={ form.control }
-                            name="password"
-                            render={ ({ field }) => (
-                                <FormItem className="mt-4">
-                                    <FormLabel>Mot de passe</FormLabel>
-                                    <FormControl>
-                                        <Input type="password" placeholder="Entrez votre mot de passe" { ...field } />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            ) }
-                        />
-                        <Button type="submit" className="w-full mt-6">Se connecter</Button>
-                    </form>
-                </Form>
-                <p className="text-center">
-                    <span className="text-sm text-muted-foreground">Pas encore de compte ?</span>
-                    <Button variant="link" asChild>
-                        <Link href="/register">Inscris-toi ici !</Link>
-                    </Button>
-                </p>
+                <Tabs defaultValue="login" className="mt-2 w-full">
+                    <TabsList className="grid w-full grid-cols-2 [&>*]:cursor-pointer">
+                        <TabsTrigger value="login" className="w-full text-center">Connexion</TabsTrigger>
+                        <TabsTrigger value="signup" className="w-full text-center">Inscription</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="login">
+                        <form className="space-y-2">
+                            <label htmlFor="email">Email :</label>
+                            <Input id="email" name="email" type="email" required />
+                            <label htmlFor="password">Mot de passe :</label>
+                            <Input id="password" name="password" type="password" required />
+                            <p className="text-sm text-muted-foreground">Mot de passe oublié ? <a href="/forgot-password" className="text-blue-500 hover:underline">Clique ici</a></p>
+                            <Button className="w-full" formAction={ login }>Se connecter</Button>
+                        </form>
+                    </TabsContent>
+                    <TabsContent value="signup">
+                        <form className="space-y-2">
+                            <label htmlFor="name">Nom :</label>
+                            <Input id="name" name="name" type="text" required />
+                            <label htmlFor="email">Email :</label>
+                            <Input id="email" name="email" type="email" required />
+                            <label htmlFor="password">Mot de passe :</label>
+                            <Input id="password" name="password" type="password" required />
+                            <p className="text-sm text-muted-foreground">Un email va t&apos;être envoyé pour confirmer ton adresse email.</p>
+                            <Button className="w-full" formAction={ signup }>S&apos;inscrire</Button>
+                        </form>
+                    </TabsContent>
+                </Tabs>
             </div>
-        </div>
+        </div >
     );
 };

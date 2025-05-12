@@ -43,7 +43,7 @@ export default function Page() {
                     />
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-6 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-6">
                 { showOnlyFav ? favCocktails.map((cocktail: Cocktail) => (
                     <CocktailCard
                         key={ cocktail.id }
