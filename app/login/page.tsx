@@ -12,8 +12,7 @@ export default function Page(): JSX.Element {
         <div className="p-6 w-full">
             <div className="mx-auto w-80">
                 <h1 className="text-2xl font-bold text-center">Ox4Me</h1>
-                <h3 className="text-lg font-bold mt-2">Connexion</h3>
-                <p className="text-sm text-muted-foreground">Connecte toi à l&apos;Ox4Me pour accéder à ton calendrier des évènements de l&apos;Oxford Pub</p>
+                <p className="text-sm text-muted-foreground mt-2">Connecte toi à l&apos;Ox4Me pour accéder à ton calendrier des évènements de l&apos;Oxford Pub</p>
                 <Tabs defaultValue="login" className="mt-2 w-full">
                     <TabsList className="grid w-full grid-cols-2 [&>*]:cursor-pointer">
                         <TabsTrigger value="login" className="w-full text-center">Connexion</TabsTrigger>

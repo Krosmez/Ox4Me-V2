@@ -1,6 +1,6 @@
 "use client";
 
-import CocktailCard from '@/components/CocktailCard';
+import CocktailCard from '@/components/custom/CocktailCard';
 import { Switch } from '@/components/ui/switch';
 import { Cocktail } from '@/models';
 import { useEffect, useState } from 'react';
