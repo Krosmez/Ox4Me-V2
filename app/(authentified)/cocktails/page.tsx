@@ -1,6 +1,6 @@
 "use client";
 
-import CocktailCard from '@/components/CocktailCard';
+import CocktailCard from '@/components/custom/CocktailCard';
 import { Switch } from '@/components/ui/switch';
 import { Cocktail } from '@/models';
 import { useEffect, useState } from 'react';
@@ -24,9 +24,11 @@ export default function Page() {
     }, []);
 
     return (
-        <div>
+        <>
             <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold">Cocktail page</h1>
+                <h1 className="text-2xl font-bold">
+                    🍹 Les Cocktails
+                </h1>
                 <div className="flex items-center gap-2">
                     <label
                         htmlFor="show-fav"
@@ -61,6 +63,6 @@ export default function Page() {
                     ))
                 }
             </div>
-        </div>
+        </>
     );
 };
